@@ -11,7 +11,7 @@
 > – A Developer Who Escaped YAML Hell  
 
 ## Use cases:
-[/docs/usecases]
+(Use cases)[/docs/usecases]
 ---
 
 ## **🚫 Why TerraformaticJS Over Raw HCL?**  
