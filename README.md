@@ -1,18 +1,9 @@
-**🚀 Welcome to TerraformaticJS**  
-*The JavaScript-powered Terraform experience you didn’t know you needed.*  
-
----
-
-[](/image (3).jpg)
-
----
-
 ## **🌱 Why TerraformaticJS?**  
 **Terraform** is brilliant. **HCL**… less so.  
 - **You’re a JavaScript developer**. You want loops, functions, and modules—not `for_each` and `lookup()`.  
 - **You love Terraform’s power**, but hate debugging missing braces in 500-line `main.tf` files.  
 - **You want to generate dynamic configs** (dev/staging/prod) without copy-pasting HCL.  
-
+()[Terraformatic/image1.png]
 **TerraformaticJS** bridges the gap:  
 ```javascript  
 // Write JS  
