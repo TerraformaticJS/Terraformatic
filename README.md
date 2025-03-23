@@ -167,7 +167,3 @@ git clone https://github.com/terraformaticjs/core
 
 **🛠️ Built by developers who believe infrastructure should be *programmable*, not *painful*.**  
 *Apache 2.0 License | Contributors Welcome*  
-
---- 
-
-This version maintains consistency with the updated block/attr structure while emphasizing the native JS approach. I've added concrete examples of the $raw and $func operators, and preserved the comparison table while aligning it with the new syntax.
