@@ -3,7 +3,7 @@
 
 ---
 
-[](https://github.com/TerraformaticJS/Terraformatic/blob/main/image%20(3).jpg)
+[](/image (3).jpg)
 
 ---
 
