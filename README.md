@@ -3,10 +3,7 @@
 
 ---
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/12345678/1234567890-abcd1234-ef56-7890-1234567890ab.png(https://github.com/TerraformaticJS/Terraformatic/blob/main/image%20(3).jpg" width="400" alt="TerraformaticJS: JS seeds sprouting HCL trees">  
-  *"Because infrastructure code should feel like a **creative act**, not a tax return."*  
-</div>  
+[https://github.com/TerraformaticJS/Terraformatic/blob/main/image%20(3).jpg]
 
 ---
 
