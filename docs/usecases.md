@@ -164,6 +164,4 @@ validateInstanceType(ec2Config);
 
 *Now go plant those magic beans and watch your cloud garden grow!* 🌱☁️  
 
---- 
-
-Need more examples? Let’s brainstorm *10 more use cases* or dive into **TypeScript integration**! 😎
+---
