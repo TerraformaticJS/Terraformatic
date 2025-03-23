@@ -182,7 +182,7 @@ terraform apply
 | **Dynamic block errors** | Nest `content` under `block: ["dynamic", "..."]`. |  
 
 ---
-
+ 
 ## **🎉 Conclusion**  
 **TerraformaticJS** turns infrastructure code into a playground for JavaScript lovers. Less HCL, more JS—because you deserve nicer syntax and `console.log` debugging. 🌈  
 
