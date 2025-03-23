@@ -1,9 +1,3 @@
-(Due to technical issues, the search service is temporarily unavailable.)
-
-Here’s the revamped **TerraformaticJS** documentation with your latest changes and a new "Why TerraformaticJS?" section. Let’s make infrastructure-as-code feel like a JS-powered adventure! 🌟
-
---- 
-
 # **TerraformaticJS** 🌱⚡  
 *Sprout Terraform configs from JavaScript seeds.*  
 
@@ -33,76 +27,112 @@ Here’s the revamped **TerraformaticJS** documentation with your latest changes
 
 ## **🚀 Core Concepts** (Updated!)  
 
-### **1. Blocks: Simpler Than Ever**  
-Blocks now use minimalist keys:  
+### **1. Blocks: Structure Simplified**  
+Blocks are defined using three core keys:  
 
 | Key       | Description                                  | Example JS                            | Rendered HCL                     |  
 |-----------|----------------------------------------------|---------------------------------------|----------------------------------|  
-| `block`   | Block type + labels (e.g., `["resource", "aws_s3_bucket"]`) | `["resource", "aws_s3_bucket", "my_bucket"]` | `resource "aws_s3_bucket" "my_bucket"` |  
-| `attributes` | Key-value pairs (literals, vars, or raw expressions) | `{ acl: "private" }`                  | `acl = "private"`                |  
-| `child`   | Nested blocks (e.g., `lifecycle`, `content`) | `[{ block: ["lifecycle"] }]`          | `lifecycle { ... }`              |  
+| `block`   | Block type + labels as an array (e.g., `["resource", "aws_s3_bucket", "name"]`) | `["terraform"]` | `terraform { ... }` |  
+| `attr`    | Key-value pairs (literals, variables, expressions) | `{ ami: "ami-123" }` | `ami = "ami-123"` |  
+| `child`   | Nested blocks (e.g., `cpu_options`, `content`) | `[{ block: ["cpu_options"], attr: {...} }]` | `cpu_options { ... }` |  
+
+**Block Structure Rules:**  
+- The first string in `block` always specifies the block type (e.g., `resource`, `provider`).  
+- Subsequent strings are Terraform labels (resource type, name).  
 
 ```javascript  
-// S3 bucket with lifecycle rule (updated syntax)  
-const s3Bucket = {  
-  block: ["resource", "aws_s3_bucket", "my_bucket"],  
-  attributes: {  
-    bucket: "my-magical-bucket",  
-    tags: { $func: 'tomap({ Name = "Bucket of Wonders" })' },  
+// EC2 instance with nested CPU options (updated syntax)  
+const aws_instance_config = {  
+  block: ["resource", "aws_instance", "myinstance"],  
+  attr: {  
+    ami: { $raw: "aws_ami.ubuntu.id" }, // Renders as aws_ami.ubuntu.id  
+    instance_type: "t3.micro",  
+    tags: {  
+      Name: "Helloworlds"  
+    }  
   },  
   child: [{  
-    block: ["lifecycle"],  
-    attributes: {  
-      prevent_destroy: { $var: "production" } // Renders as var.production  
-    }  
+    block: ["cpu_options"],  
+    attr: { core_count: 2, threads_per_core: 2 }  
   }]  
 };  
 ```  
 
 ---
 
-### **2. Attributes: Clarity with `$var` and `$raw`**  
-| Type          | JS Syntax                      | HCL Output                  |  
-|---------------|--------------------------------|-----------------------------|  
-| **Literal**   | `"tcp"`                       | `"tcp"`                     |  
-| **Variable**  | `{ $var: "region" }`          | `var.region`                |  
-| **Raw Expr**  | `{ $raw: "ingress.value" }`   | `ingress.value`             |  
-| **Function**  | `{ $func: "tolist([...])" }`  | `tolist([...])`             |  
-| **Heredoc**   | `{ $heredoc: "MULTILINE" }`   | `<<-EOT\nMULTILINE\nEOT`    |  
+### **2. Attribute Rendering**  
+Attributes (`attr`) always use `=` assignment in HCL. Blocks without attributes render as empty structures.  
 
 ```javascript  
-// Mixing literals, vars, and raw expressions (no ambiguity!)  
-const ec2Instance = {  
+// Block with attributes vs empty block  
+{ block: ["required_providers"], attr: {} }  
+// Renders as:  
+// required_providers {}  
+
+{  
+  block: ["required_providers"],  
+  attr: {  
+    aws: { source: "hashicorp/aws", version: "~>5.5.0" }  
+  }  
+}  
+// Renders as:  
+// required_providers {  
+//   aws = {  
+//     source = "hashicorp/aws"  
+//     version = "~>5.5.0"  
+//   }  
+// }  
+```  
+
+---
+
+### **3. Dynamic Attributes: $ Magic**  
+Use special `$` operators to inject variables, functions, and raw HCL:  
+
+| Operator  | JS Syntax                      | HCL Output                  |  
+|-----------|--------------------------------|-----------------------------|  
+| **`$var`** | `{ $var: "region" }`          | `var.region`                |  
+| **`$raw`** | `{ $raw: "aws_ami.ubuntu.id" }` | `aws_ami.ubuntu.id`         |  
+| **`$func`**| `{ $func: "tolist([1,2,3])" }` | `tolist([1,2,3])`           |  
+|           | `{ $func: { name: "abs", args: { $var: "num" } } }` | `abs(var.num)` |  
+| **`$heredoc`** | `{ $heredoc: "Hello\nWorld" }` | `<<-EOT\nHello\nWorld\nEOT` |  
+
+```javascript  
+// Mixing operators  
+const user_data = {  
+  $heredoc: `#!/bin/bash  
+  echo "Welcome to ${ { $raw: "var.app_name" } }!"  
+  `  
+};  
+
+const ec2Config = {  
   block: ["resource", "aws_instance", "web"],  
-  attributes: {  
+  attr: {  
     ami: "ami-0c55b159cbfafe1f0",  
     instance_type: { $var: "instance_size" }, // var.instance_size  
-    user_data: {  
-      $heredoc: `<<-EOT  
-        #!/bin/bash  
-        echo "Welcome to ${ { $raw: "var.app_name" } }!"  
-      EOT`  
-    }  
+    user_data: user_data  
   }  
 };  
 ```  
 
 ---
 
-### **3. Dynamic Blocks: Explicit and Clean**  
+### **4. Dynamic Blocks**  
+Use `["dynamic", "BLOCK_NAME"]` in the `block` array to create dynamic blocks:  
+
 ```javascript  
-// Generate security group rules (fixed syntax!)  
+// Security group with dynamic ingress rules  
 const sg = {  
   block: ["resource", "aws_security_group", "web"],  
   child: [{  
-    block: ["dynamic", "ingress"], // ✅ Dynamic block  
-    attributes: {  
+    block: ["dynamic", "ingress"],  
+    attr: {  
       for_each: { $var: "allowed_ports" } // var.allowed_ports  
     },  
     child: [{  
-      block: ["content"], // Nested content block  
-      attributes: {  
-        from_port: { $raw: "ingress.value" }, // Raw expression  
+      block: ["content"],  
+      attr: {  
+        from_port: { $raw: "ingress.value" }, // Raw reference  
         to_port: { $raw: "ingress.value" },  
         protocol: "tcp"  
       }  
@@ -129,29 +159,29 @@ resource "aws_security_group" "web" {
 
 ## **✨ Quickstart Guide**  
 
-### **Step 1: Plant the Seed**  
+### **Step 1: Define Configuration**  
 ```javascript  
 // terraform.js  
 const terraformConfig = {  
   block: ["terraform"],  
-  attributes: {  
+  attr: {  
     required_version: ">= 1.2.0"  
   },  
   child: [{  
     block: ["required_providers"],  
-    attributes: {  
+    attr: {  
       aws: { source: "hashicorp/aws", version: "5.0.0" }  
     }  
   }]  
 };  
 ```  
 
-### **Step 2: Summon Resources**  
+### **Step 2: Add Resources**  
 ```javascript  
 // database.js  
-const magicalDatabase = {  
+const db = {  
   block: ["resource", "aws_db_instance", "default"],  
-  attributes: {  
+  attr: {  
     engine: "postgres",  
     instance_class: { $var: "db_size" }, // var.db_size  
     password: { $var: "secrets.db_password" }  
@@ -159,7 +189,7 @@ const magicalDatabase = {
 };  
 ```  
 
-### **Step 3: Cast the Spell**  
+### **Step 3: Generate & Apply**  
 ```bash  
 node terraformatic.js > main.tf  
 terraform apply  
@@ -168,21 +198,21 @@ terraform apply
 ---
 
 ## **🔮 Best Practices**  
-- **Use `$raw` for Non-Variables**: Mark Terraform references (e.g., `aws_instance.web.id`).  
-- **Keep JS Configs DRY**: Reuse blocks with JS functions and modules.  
-- **Type Safety**: Add TypeScript types for autocomplete and validation.  
+- **Use `$raw` for Cross-References**: Directly reference resources (e.g., `aws_ami.ubuntu.id`).  
+- **Centralize Variables**: Manage `$var` references in a config object.  
+- **Leverage JS Logic**: Use loops and functions to avoid repetitive blocks.  
 
 ---
 
 ## **🌩️ Troubleshooting**  
 | Symptom                  | Fix                                  |  
 |--------------------------|--------------------------------------|  
-| **HCL renders `"ingress.value"`** | Use `{ $raw: "ingress.value" }` instead of a raw string. |  
+| **HCL renders `"ingress.value"`** | Use `{ $raw: "ingress.value" }` instead of a string. |  
 | **Missing `var.` prefix** | Ensure `$var: "name"` (not `"var.name"`). |  
-| **Dynamic block errors** | Nest `content` under `block: ["dynamic", "..."]`. |  
+| **Empty block rendering** | Add at least one `attr` or `child` to the block. |  
 
 ---
- 
+
 ## **🎉 Conclusion**  
 **TerraformaticJS** turns infrastructure code into a playground for JavaScript lovers. Less HCL, more JS—because you deserve nicer syntax and `console.log` debugging. 🌈  
 
@@ -190,4 +220,7 @@ terraform apply
 
 --- 
 
-Want to add a **CLI tool blueprint** or **TypeScript examples**? Let’s grow this further! 🌱
+**What’s Next?**  
+- Explore the **CLI tool** for config generation.  
+- Add **TypeScript types** for autocomplete.  
+- Contribute on GitHub! 🌍
