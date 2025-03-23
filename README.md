@@ -5,7 +5,7 @@
 - **You want to generate dynamic configs** (dev/staging/prod) without copy-pasting HCL.  
 
 ---
-(Bean)[/image1.png]
+(Bean)[https://github.com/TerraformaticJS/Terraformatic/blob/main/image1.png]
 **TerraformaticJS** bridges the gap:  
 ```javascript  
 // Write JS  
