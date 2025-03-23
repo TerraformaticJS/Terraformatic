@@ -1,6 +1,3 @@
-# Terraformatic
----
-
 # **TerraformaticJS** 🌱⚡  
 *Because writing HCL should feel like planting magic beans.*  
 
