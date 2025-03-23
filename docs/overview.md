@@ -1,9 +1,3 @@
-(Due to technical issues, the search service is temporarily unavailable.)
-
-Here’s the revamped **TerraformaticJS** documentation with your latest changes and a new "Why TerraformaticJS?" section. Let’s make infrastructure-as-code feel like a JS-powered adventure! 🌟
-
---- 
-
 # **TerraformaticJS** 🌱⚡  
 *Sprout Terraform configs from JavaScript seeds.*  
 
