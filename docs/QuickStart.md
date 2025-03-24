@@ -94,7 +94,6 @@ Use special `$` operators to inject variables, functions, and raw HCL:
 | **`$var`** | `{ $var: "region" }`          | `var.region`                |  
 | **`$raw`** | `{ $raw: "aws_ami.ubuntu.id" }` | `aws_ami.ubuntu.id`         |  
 | **`$func`**| `{ $func: "tolist([1,2,3])" }` | `tolist([1,2,3])`           |  
-|           | `{ $func: { name: "abs", args: { $var: "num" } } }` | `abs(var.num)` |  
 | **`$heredoc`** | `{ $heredoc: "Hello\nWorld" }` | `<<-EOT\nHello\nWorld\nEOT` |  
 
 ```javascript  
