@@ -5,7 +5,7 @@
 - **You want dynamic config generation** (alpha_centauri/andromeda/milky_way) without HCL copy-paste.  
 
 ---
-()[docs/pebbelhpglow.jpg]
+!(logo)[docs/pebbelhpglow.jpg]
 **TerraformaticJS** propels your infrastructure with cosmic block structure:  
 ```javascript  
 // Write JS with celestial block/attr separation  
