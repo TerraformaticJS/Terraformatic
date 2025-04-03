@@ -1,8 +1,6 @@
 
 import { KeyTypeHandler } from "./handlers/tfmatic_tokenizer_handlers.js";
 import { tokenHandler } from "./handlers/tfmatic_tokenizer_handlers.js";
-import { BlockConstructor } from "./tfmatic_converter.js";
-
 //I really suck at modularization, i wish i can make a monolithic source code and just never update it lol.
 //The data interface.
 
