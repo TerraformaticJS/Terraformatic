@@ -131,43 +131,4 @@ function block_tokenizer(block, level = 0) {
     tokens.push("} \n");
     return tokens
 }
-// EC2 instance with nested CPU options (updated syntax)  
-const aws_instance_config = {
-    block: ["resource", "aws_instance", "myinstance"],
-    attr: [{
-        ami: { $raw: "aws_ami.ubuntu.id" }, // Renders as aws_ami.ubuntu.id  
-        instance_type: "t3.micro",
-        tags: {
-            Name: "Helloworlds"
-        }
-    },{
-        ami: { $raw: "aws_ami.ubuntu.id" }, // Renders as aws_ami.ubuntu.id  
-        instance_type: "t3.micro",
-        tags: {
-            Name: "Helloworlds"
-        }
-    }],
-    child: [{
-        block: ["cpu_options"],
-        attr: { core_count: 2, threads_per_core: 2 }
-    }]
-};
 
-const nano = {
-    block: ["required_providers"],
-    attr: {
-        aws : {source: "souce",version: {$var:"var.value"} }
-    }
-}
-
-const config = {
-    block:["terraform"],
-    child:nano,
-}
-//console.log(block_tokenizer(aws_instance_config, 0).flat(Infinity).join(""))
-//JSDOC Typescript
-//Write File
-//Multiple Files
-//
-let meta_block = BlockConstructor(config, 0);
-console.log(block_tokenizer(meta_block).flat(Infinity).join(""))
