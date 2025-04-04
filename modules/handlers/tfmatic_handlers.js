@@ -3,7 +3,9 @@ import { Block } from "../proto/block.js";
 import { HandleAttributeTypes } from "../tfmatic_converter.js";
 
 /**
- * Handlers for generating Terraform configuration elements.
+ * Handlers for generating tfmatic configuration elements from tfmatic config objects.
+ * config_obj = {...}
+ * config_obj => ``Attr(), Block()```
  * @module handlers/tfmatic_handlers
  */
 
@@ -32,7 +34,8 @@ export let AttrGeneratorHandler = {
 
 
 /**
- * Block Constructor Handlers - Creates Block objects from Terraform configurations.
+ * Block Constructor Handlers - Creates Block objects from tfmatic configuration objects.
+ * child:
  * @typedef {Object} BlockConstructorHandler
  * @property {Function} false - Handles single block creation.
  * @property {Function} true - Handles array of blocks (creates multiple Block objects).
@@ -53,7 +56,11 @@ export let BlockConstructorHandler = {
 }
 
 /**
- * Attribute Constructor Handlers - Processes attribute configurations.
+ * Attribute Constructor Handlers - Processes tfmatic attribute configurations objects
+ * e.g  
+ * attr = tfmatic_config_obj.attr
+ * attr = [{...},{...}.{...}] 
+ * attr = {...} 
  * @typedef {Object} AttrConstructorHandler
  * @property {Function} false - Handles single attribute object.
  * @property {Function} true - Handles array of attribute objects (flattens nested structures).

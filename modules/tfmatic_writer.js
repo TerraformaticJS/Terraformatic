@@ -1,8 +1,13 @@
 
 import { KeyTypeHandler } from "./handlers/tfmatic_tokenizer_handlers.js";
 import { tokenHandler } from "./handlers/tfmatic_tokenizer_handlers.js";
-//I really suck at modularization, i wish i can make a monolithic source code and just never update it lol.
-//The data interface.
+
+
+/**
+ * 
+ *@module converters/tfmatic_writer
+ */
+
 
 export function $string_tokenizer(attr) {
     return `"${attr._value}"`;
@@ -110,7 +115,7 @@ function block_prefix_tokenizer(block_prefix) {
  * @param {number} [level=0] - Indentation level.
  * @returns {string[]} Tokenized HCL fragments.
  */
-function block_tokenizer(block, level = 0) {
+export function block_tokenizer(block, level = 0) {
     let tokens = [];
     let indentation = level;
     let white_space = "    ".repeat(indentation);
