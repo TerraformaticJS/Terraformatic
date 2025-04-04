@@ -20,5 +20,3 @@ export function Block(prefix, children, attributes) {
         this.attributes = AttrConstructorHandler[`${Array.isArray(attributes)}`](attributes);
     } else this.attributes = [];
 }
-
-new Block([1,1,1],[],[])

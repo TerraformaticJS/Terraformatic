@@ -2,13 +2,6 @@
 import { KeyTypeHandler } from "./handlers/tfmatic_tokenizer_handlers.js";
 import { tokenHandler } from "./handlers/tfmatic_tokenizer_handlers.js";
 
-
-/**
- * 
- *@module converters/tfmatic_writer
- */
-
-
 export function $string_tokenizer(attr) {
     return `"${attr._value}"`;
 }
@@ -59,16 +52,22 @@ export function object_value_tokenizer(attr, level = 0) {
     tokens.push(white_space)
     tokens.push(`${attr._name}`)
     tokens.push(" = ")
-    if (KeyTypeHandler[attr._value[0]._name] && attr._value.length === 1) {
-        tokens.push(KeyTypeHandler[attr._value[0]._name](attr._value[0]))
-        tokens.push("\n")
-        return tokens
+    if (attr._value.length != 0) {
+        if (KeyTypeHandler[attr._value[0]._name] && attr._value.length === 1) {
+            tokens.push(KeyTypeHandler[attr._value[0]._name](attr._value[0]))
+            tokens.push("\n")
+            return tokens
+        }
+        else {
+            tokens.push("{\n")
+            tokens.push(attr_tokenizer(attr._value, indentation + 1))
+            tokens.push(white_space)
+            tokens.push("}\n")
+            return tokens;
+        }
     }
     else {
-        tokens.push("{\n")
-        tokens.push(attr_tokenizer(attr._value, indentation + 1))
-        tokens.push(white_space)
-        tokens.push("}\n")
+        tokens.push("{ }\n")
         return tokens;
     }
 }
@@ -121,17 +120,19 @@ export function block_tokenizer(block, level = 0) {
     let white_space = "    ".repeat(indentation);
     tokens.push(white_space);
     tokens.push(block_prefix_tokenizer(block.block_prefix))
-    tokens.push(" { \n");
-    if(block.attributes.length > 0){
-        tokens.push(attr_tokenizer(block.attributes,level + 1));
+    if (block.attributes.length != 0 || block.block_children.length != 0) {
+        tokens.push("{\n");
+        if (block.attributes.length > 0) {
+            tokens.push(attr_tokenizer(block.attributes, level + 1));
         }
-    if(block.block_children.length > 0){
-        for (let child of block.block_children){
-            tokens.push(block_tokenizer(child, level + 1));
+        if (block.block_children.length > 0) {
+            for (let child of block.block_children) {
+                tokens.push(block_tokenizer(child, level + 1));
+            }
         }
-        }
-    tokens.push(white_space);
-    tokens.push("} \n");
+        tokens.push(white_space);
+        tokens.push("} \n");
+    }else {tokens.push("{ }\n")}
     return tokens
 }
 
