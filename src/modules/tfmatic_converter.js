@@ -1,5 +1,6 @@
 import { AttrGeneratorHandler } from "./handlers/tfmatic_handlers.js";
 import { Block } from "./proto/block.js";
+import { Attr } from "./proto/attr.js";
 /**
  *@module converters/tfmatic_writer
  */
@@ -54,6 +55,7 @@ export function HandleAttributeTypes(object) {
         let current_item = object[key];
         data.push(AttrGeneratorHandler[typeof current_item](object, key))
     }
+
     return data;
 }
 

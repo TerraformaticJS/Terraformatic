@@ -1,19 +1,20 @@
-import { BlockConstructor } from "./modules/tfmatic_converter.js";
-import { block_tokenizer } from "./modules/tfmatic_writer.js";
+import { BlockConstructor } from "./src/modules/tfmatic_converter.js";
+import { block_tokenizer } from "./src/modules/tfmatic_writer.js";
 
 
 // Write JS with celestial block/attr separation  
-const cometCore = {  
-    block: ["resource", "aws_s3_bucket", "comet_core"],  
-    attr: { bucket: `asteroid-belt` },  
-    child: [{  
-      block: ["trajectory"],  
-      attr: { target_orbit: { $raw: "aws_s3_logs.galaxy.id" } }  
-    }]  
-  };  
+export const baseDefenseShield = {  
+  block: ["terraform"],  
+  attr: {},  
+  child: [{  
+    block: ["required_providers"],  
+    attr: {  
+      aws: { source: "hashicorp/aws", version: "5.0.0" }  
+    }  
+  }]  
+};  
 
-
-  let my_block = BlockConstructor(cometCore);
+  let my_block = BlockConstructor(baseDefenseShield);
   console.log(block_tokenizer(my_block).flat(Infinity).join(""))
     
   // Generates pristine HCL:  

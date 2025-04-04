@@ -18,16 +18,16 @@ import { HandleAttributeTypes } from "../tfmatic_converter.js";
  * @property {Function} boolean - Handles boolean attributes.
  */
 export let AttrGeneratorHandler = {
-    "object":   (object, key) => {
+    "object": (object, key) => {
         return new Attr(key, HandleAttributeTypes(object[key]));
     },
-    "string":   (object, key) => {
+    "string": (object, key) => {
         return new Attr(key, object[key])
     },
-    "number":   (object, key) => {
+    "number": (object, key) => {
         return new Attr(key, object[key])
     },
-    "boolean":  (object, key) => {
+    "boolean": (object, key) => {
         return new Attr(key, object[key])
     },
 }
@@ -43,13 +43,17 @@ export let AttrGeneratorHandler = {
 export let BlockConstructorHandler = {
     "false": (block) => {
         let block_array = []
-        block_array.push(new Block(block.block, block.child, block.attr))
+        if (Object.keys(block) != 0) {
+            block_array.push(new Block(block.block, block.child, block.attr))
+        }
         return block_array;
     },
     "true": (blocks) => {
         let block_array = []
         for (let block of blocks) {
-            block_array.push(new Block(block.block, block.child, block.attr))
+            if (Object.keys(block) != 0) {
+                block_array.push(new Block(block.block, block.child, block.attr))
+            }
         }
         return block_array;
     }
