@@ -162,4 +162,4 @@ git clone https://github.com/terraformaticjs/core
 - [ ] **Astro Viewer**: Browser-based HCL constellation maps  
 - [ ] **Orbital Defense Policies**: JS-based validation shields  
 - [ ] **Meteorite Assimilation**: Convert existing TF to JS star charts
-- [ ] **Production Grade Rocket**: Make the code base production grade!
+- [ ] **Production Grade Rocket**: Make the code base production grade! (view milestones)
