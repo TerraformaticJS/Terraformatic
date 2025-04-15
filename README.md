@@ -5,7 +5,7 @@ This project is not affiliated with or endorsed by HashiCorp or Terraform. ‘Te
 ## "Orchestrate infrastructure at the edge of the universe."
 ---
 
-<img src="https://github.com/TerraformaticJS/AphelionJS/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" style="border-radius:10px" />
+<img src="https://github.com/TerraformaticJS/AphelionJS/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" />
 
 ## **☄️ Why AphelionJS?**  
 **Terraform** is stellar. **HCL**… feels like navigating an asteroid belt.  
