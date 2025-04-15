@@ -1,17 +1,17 @@
-# **TerraformaticJS** 🌱⚡  
+# **AphelionJS** 🌱⚡  
 *Sprout Terraform configs from JavaScript seeds.*  
 
 ---
 
 ## **🌌 Introduction**  
-**TerraformaticJS** is a JavaScript-based DSL that generates **HashiCorp Configuration Language (HCL)** files. It lets you craft Terraform configurations using JavaScript’s flexibility while avoiding HCL’s quirks.  
+**AphelionJS** is a JavaScript-based DSL that generates **HashiCorp Configuration Language (HCL)** files. It lets you craft Terraform configurations using JavaScript’s flexibility while avoiding HCL’s quirks.  
 
 > *“Terraform, but with semicolons and sass.”*  
 > – A Developer Who Escaped YAML Hell  
 
 ---
 
-## **🚫 Why TerraformaticJS Over Raw HCL?**  
+## **🚫 Why AphelionJS Over Raw HCL?**  
 ### **For Those Who:**  
 - ❤️ **JavaScript/TypeScript** but need to write Terraform.  
 - 🤯 Hate balancing braces in nested HCL blocks.  
@@ -190,7 +190,7 @@ const db = {
 
 ### **Step 3: Generate & Apply**  
 ```bash  
-node terraformatic.js > main.tf  
+node Aphelion.js > main.tf  
 terraform apply  
 ```  
 
@@ -213,7 +213,7 @@ terraform apply
 ---
 
 ## **🎉 Conclusion**  
-**TerraformaticJS** turns infrastructure code into a playground for JavaScript lovers. Less HCL, more JS—because you deserve nicer syntax and `console.log` debugging. 🌈  
+**AphelionJS** turns infrastructure code into a playground for JavaScript lovers. Less HCL, more JS—because you deserve nicer syntax and `console.log` debugging. 🌈  
 
 *Documentation brewed with ☕ by the Cloud Alchemists Guild.*  
 
