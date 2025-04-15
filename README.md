@@ -1,13 +1,15 @@
 This project is not affiliated with or endorsed by HashiCorp or Terraform. ‘Terraform’ is a registered trademark of HashiCorp, Inc.
+# AphelionJs
+## "Orchestrate infrastructure at the edge of the universe."
+---
+
+<img src="https://github.com/AphelionJS/Aphelion/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" />
 
 ## **☄️ Why AphelionJS?**  
 **Terraform** is stellar. **HCL**… feels like navigating an asteroid belt.  
 - **You're a JavaScript developer**. You want native loops, functions, and modules - not `for_each` and `lookup()` meteor showers.  
 - **You love Terraform's power**, but hate debugging missing braces in 500-line HCL asteroid maps.  
 - **You want dynamic config generation** (alpha_centauri/andromeda/milky_way) without HCL copy-paste.  
-
----
-<img src="https://github.com/AphelionJS/Aphelion/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" />
 
 **AphelionJS** propels your infrastructure with cosmic block structure:  
 ```javascript  
