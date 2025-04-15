@@ -2,7 +2,7 @@ AphelionJS is a project of Aphelion Labs
 This project is not affiliated with or endorsed by HashiCorp or Terraform. ‘Terraform’ is a registered trademark of HashiCorp, Inc.
 
 # AphelionJs
-## "Orchestrate infrastructure at the edge of the universe."
+"Orchestrate infrastructure at the edge of the universe."
 ---
 
 <img src="https://github.com/TerraformaticJS/AphelionJS/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" />
