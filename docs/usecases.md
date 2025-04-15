@@ -1,4 +1,4 @@
-### **TerraformaticJS: Cool Use Cases & Comparisons** 🌟  
+### **AphelionJS: Cool Use Cases & Comparisons** 🌟  
 *Why settle for static HCL when you can wield JavaScript’s superpowers?*  
 
 ---
@@ -112,9 +112,9 @@ const prodConfig = envConfig("prod");
 
 ---
 
-## **🆚 Comparison: TerraformaticJS vs. Other JS Wrappers**  
+## **🆚 Comparison: AphelionJS vs. Other JS Wrappers**  
 
-| Feature                | **TerraformaticJS**              | **CDKTF** (HashiCorp)          | **Pulumi**                      |  
+| Feature                | **AphelionJS**              | **CDKTF** (HashiCorp)          | **Pulumi**                      |  
 |------------------------|----------------------------------|--------------------------------|---------------------------------|  
 | **Approach**           | JS ➔ HCL (Direct translation)    | JS ➔ HCL (Higher-level abstraction) | JS ➔ Cloud APIs (No HCL)       |  
 | **Learning Curve**     | Low (HCL-like structure)         | Moderate (CDK concepts)        | Steep (Cloud SDK knowledge)     |  
@@ -125,7 +125,7 @@ const prodConfig = envConfig("prod");
 
 ---
 
-### **Why TerraformaticJS Wins for Terraform Lovers** 🏆  
+### **Why AphelionJS Wins for Terraform Lovers** 🏆  
 1. **No Magic**: You control the HCL output.  
 2. **No Lock-In**: Generated HCL works with any Terraform setup.  
 3. **Simplicity**: Just JS objects ➔ HCL. No new SDKs to learn.  
@@ -160,7 +160,7 @@ validateInstanceType(ec2Config);
 ---
 
 ## **🚀 Conclusion**  
-**TerraformaticJS** isn’t just another wrapper—it’s a **bridge** between Terraform’s reliability and JavaScript’s flexibility. Whether you’re slicing configs into modules, generating infra dynamically, or validating before deployment, TerraformaticJS lets you code infrastructure *your way*.  
+**AphelionJS** isn’t just another wrapper—it’s a **bridge** between Terraform’s reliability and JavaScript’s flexibility. Whether you’re slicing configs into modules, generating infra dynamically, or validating before deployment, AphelionJS lets you code infrastructure *your way*.  
 
 *Now go plant those magic beans and watch your cloud garden grow!* 🌱☁️  
 
