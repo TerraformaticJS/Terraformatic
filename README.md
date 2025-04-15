@@ -1,15 +1,15 @@
 This project is not affiliated with or endorsed by HashiCorp or Terraform. ‘Terraform’ is a registered trademark of HashiCorp, Inc.
 
-## **☄️ Why TerraformaticJS?**  
+## **☄️ Why AphelionJS?**  
 **Terraform** is stellar. **HCL**… feels like navigating an asteroid belt.  
 - **You're a JavaScript developer**. You want native loops, functions, and modules - not `for_each` and `lookup()` meteor showers.  
 - **You love Terraform's power**, but hate debugging missing braces in 500-line HCL asteroid maps.  
 - **You want dynamic config generation** (alpha_centauri/andromeda/milky_way) without HCL copy-paste.  
 
 ---
-<img src="https://github.com/TerraformaticJS/Terraformatic/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" />
+<img src="https://github.com/AphelionJS/Aphelion/blob/main/docs/pebbelhpglow.jpg?raw=true" alt="Logo" width="200" />
 
-**TerraformaticJS** propels your infrastructure with cosmic block structure:  
+**AphelionJS** propels your infrastructure with cosmic block structure:  
 ```javascript  
 // Write JS with celestial block/attr separation  
 const cometCore = {  
@@ -104,7 +104,7 @@ export const baseDefenseShield = {
 
 ## **🛸 Why Not CDKTF or Pulumi?**  
 
-|                        | **TerraformaticJS**       | **CDKTF**               | **Pulumi**              |  
+|                        | **AphelionJS**       | **CDKTF**               | **Pulumi**              |  
 |------------------------|---------------------------|-------------------------|-------------------------|  
 | **Control**            | Pure HCL output           | Generated HCL           | Cloud API calls         |  
 | **Syntax**             | Native JS constellations  | CDK constructs          | Language SDKs           |  
@@ -116,7 +116,7 @@ export const baseDefenseShield = {
 ## **🌠 Quick Start**  
 1. **Install**:  
 ```bash  
-npm install terraformatic  
+npm install Aphelion  
 ```  
 
 2. **Write Config**:  
@@ -136,7 +136,7 @@ export default {
 
 3. **Generate HCL**:  
 ```bash  
-npx terraformatic compile infra.tfmatic.js -o main.tf  
+npx Aphelion compile infra.tfmatic.js -o main.tf  
 ```  
 
 4. **Launch**:  
@@ -147,7 +147,7 @@ terraform init && terraform apply
 ---
 
 ## **🪐 Join the Cosmic Fleet**  
-**TerraformaticJS** is for teams who:  
+**AphelionJS** is for teams who:  
 - 🌠 **JavaScript/TypeScript** ecosystems fuel their engines  
 - 🛰️ Want gradual Terraform adoption across galaxies  
 - 🌪️ Need dynamic config generation at warp speed  
@@ -155,7 +155,7 @@ terraform init && terraform apply
 
 ```bash  
 # Contribute to the future of cosmic infrastructure:  
-git clone https://github.com/terraformaticjs/core  
+git clone https://github.com/Aphelionjs/core  
 ```  
 
 ---
