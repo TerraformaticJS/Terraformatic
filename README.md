@@ -1,3 +1,5 @@
+“This project is not affiliated with or endorsed by HashiCorp or Terraform. ‘Terraform’ is a registered trademark of HashiCorp, Inc.”
+
 ## **☄️ Why TerraformaticJS?**  
 **Terraform** is stellar. **HCL**… feels like navigating an asteroid belt.  
 - **You're a JavaScript developer**. You want native loops, functions, and modules - not `for_each` and `lookup()` meteor showers.  
