@@ -189,6 +189,16 @@ terraform init && terraform apply
 
 ---
 
+## 🛠️ TypeScript Support
+
+AphelionJS supports TypeScript for type-safe infrastructure configurations with autocompletion and validation.
+
+### Setup
+
+1. **Install TypeScript**:
+   ```bash
+   npm install --save-dev typescript ts-node @types/node
+
 ## **🤝 Contributing**
 
 We’re building AphelionJS for the future of dynamic infrastructure. Want to help us map the stars?
